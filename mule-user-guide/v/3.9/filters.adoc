@@ -71,16 +71,16 @@ The following filters are provided in Anypoint Studio.
 == Some Filtering Scenarios
 Here are some use cases to demonstrate when you might or might not want to use filters vs. another option. 
 
-1  Checking for preconditions. The client has sent a message that does not meet the contract of the current flow (endpoint). This might be a reasonable case for a filter just after a connector.  
+1-  Checking for preconditions. The client has sent a message that does not meet the contract of the current flow (endpoint). This might be a reasonable case for a filter just after a connector.  
 
 For example, a filter could verify a message has some allowed header information, otherwise just silently discarded the message without  logging or throwing an exception. The result is invalid client requests are ignored and no resources are used to track these invalid attempts. However, if the HTTP listener was listening for SOAP requests, if the message was invalid due to violating the WSDL definition, normally the expectation from the WSDL file is that this flow should return a SOAP Fault to the SOAP requestor.  In this case filtering would be a bad idea.
 
 If checking for early preconditions requires complex logic, with multiple filters, it is often more natural to express complex conditions and logic with choice routers which should then, in the individual branches, contain Filters or Validation components. 
 
-2  Checking for invariants. 
+2-  Checking for invariants. 
 During the flow, just confirming what we think is true about how the message should look like. The disadvantage of using a filter is the error condition will cause the message to disappear without logging the message or throwing an exception. In this scenario, using a filter is usually a bad practice. It would be better to either correct the issue and move on in the flow, or throw an exception.  A Validation component can perform similar logical tests as filters, but can then throw an exception if the test fails. 
 
-3  Checking for postconditions.
+3-  Checking for postconditions.
 Just before returning, assert that what should be returned from the flow matches our contract with the calling flow (client). Again, your use cases and business requirements will indicate if it is appropriate or not to silently discard a message in the last stages of a flow. Normally, you should not silently discard the message, but instead handle the issue or throw an exception. A Validation component can perform similar logical tests as filters, but can then throw an exception if the test fails. 
 
 == Filter Logic
