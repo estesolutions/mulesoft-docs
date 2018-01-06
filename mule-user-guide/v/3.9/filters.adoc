@@ -24,9 +24,11 @@ You can create a global filter that specifies a set of conditions that the messa
 
 image:filter-reference-icon.png[filter-reference-icon]
 
+Drag the *Filter Reference* processor to the canvas, click the green plus sign to configure the filter, and click a filter type from the *Choose Global Type* menu. For more information, see  link:/mule-user-guide/v/3.9/filter-ref[Filter Reference].
+
 == Bundled Filters
 
-The following filters are provided in Anypoint Studio. Drag the *Filter Reference* processor to the canvas, click the green plus sign to configure the filter, and click a filter type from the *Choose Global Type* menu. For more information, see  link:/mule-user-guide/v/3.9/filter-ref[Filter Reference].
+The following filters are provided in Anypoint Studio. 
 
 image:filter-types.png[filter-types]
 
